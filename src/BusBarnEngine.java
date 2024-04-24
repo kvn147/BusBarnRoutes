@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 import java.io.*;
 
@@ -42,9 +43,9 @@ public class BusBarnEngine {
     public static void printBarn(Set<Bus> barn) {
         System.out.println("\nBuses at the Bus Barn");
         System.out.println("=====================");
-        for (Bus b : barn) {
-            System.out.println(b);
-        }
+//        for (Bus b : barn) {
+//            System.out.println(b);
+//        }
         if (barn.isEmpty()) {
             System.out.println("The bus barn is empty!");
         }
@@ -74,20 +75,22 @@ public class BusBarnEngine {
     }
 
     /**
-     *
-     * @param barn
-     * @param routes
+     * This method prints the bus route as well as a description if it matches with a route
+     * from route.txt
+     * @param barn set of bus objects
+     * @param routes map that uses the route number as key and the route description as the value
      */
     public static void printBarnRoutes(Set<Bus> barn, Map<Integer, String> routes) {
         // Retrieves a Description for Bus Route by matching with the Routes
 
         for (Bus bus : barn) {
+            System.out.print(bus);
             int num = bus.getRoute();
             if (routes.containsKey(num)) {
-                System.out.println(routes.get(num));
+                System.out.println(" (" + routes.get(num) + ")");
             }
             else {
-                System.out.println("The route does not exist!");
+                System.out.println(" ");
             }
         }
 
